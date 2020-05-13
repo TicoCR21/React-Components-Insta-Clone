@@ -10,7 +10,7 @@ const CommentSection = props => {
   return (
     <div>
       { postComments.map( postComment => <Comment comment = { postComment } />) }
-      <CommentInput />
+      <CommentInput changeComment = { setPostComments }/>
     </div>
   );
 };
