@@ -1,14 +1,26 @@
 // You do not need to do anything in this file
-import React from 'react';
+import React, { useState } from 'react';
 
-const CommentInput = props => {
+const CommentInput = props => 
+{
+  const [ comment, setComment ] = useState( "" );
+  function changeComment( e )
+  {
+    e.preventDefault();
+    props.changeComment( prev => prev.concat( {username: "LambdaStudent", text: comment } ) );
+    setComment( "" );
+
+  }
+
+
+
   return (
-    <form className="comment-form" onSubmit={props.submitComment}>
+    <form className="comment-form" onSubmit={ changeComment }>
       <input
         type="text"
-        value={props.comment}
+        value={ comment }
         placeholder="Add comment... "
-        onChange={props.changeComment}
+        onChange = { e => setComment( e.target.value ) }
       />
     </form>
   );
